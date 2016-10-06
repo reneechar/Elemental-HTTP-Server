@@ -2,13 +2,16 @@ const http = require('http');
 const fs = require('fs');
 
 
-const http.Server = http.createServer((request) => {
+const server = http.createServer((request) => {
 
+	request.on('data', (data) => {
+		console.log('data',data.toString());
+	})
 
 
 });
 
-http.Server.listen({port: 8080}, () => {
+server.listen({port: 8080}, () => {
 	const address = server.address();
 	console.log(`Opened a server on ${address.port}`);
 });
